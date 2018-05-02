@@ -26,9 +26,9 @@ public class RecipeService {
 
     /**
      *
-     * @return the MovieApi that will provide the response data from http(GET) call
+     * @return the Recipe data that will provide the response data from http(GET) call
      */
-    public RecipeAPI getMovieApi(){
+    public RecipeAPI getRecipeApi(){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())

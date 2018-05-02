@@ -16,7 +16,7 @@ public class Ingredient implements Parcelable
 
     @SerializedName("quantity")
     @Expose
-    private int quantity;
+    private double quantity;
     @SerializedName("measure")
     @Expose
     private String measure;
@@ -66,7 +66,7 @@ public class Ingredient implements Parcelable
         this.ingredient = ingredient;
     }
 
-    public int getQuantity() {
+    public double getQuantity() {
         return quantity;
     }
 
