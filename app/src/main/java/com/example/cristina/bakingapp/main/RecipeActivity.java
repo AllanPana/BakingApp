@@ -1,20 +1,22 @@
 package com.example.cristina.bakingapp.main;
 
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 
 import com.example.cristina.bakingapp.R;
 import com.example.cristina.bakingapp.base.BaseActivity;
-import com.example.cristina.bakingapp.pojo.Recipe;
 
-import java.util.List;
+import butterknife.BindView;
 
 public class RecipeActivity extends BaseActivity implements RecipeView {
 
     private RecipePresenter recipePresenter;
 
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
     @Override
     protected void onActivityCreated(Bundle savedInstanceState) {
-
 
     }
 
@@ -26,14 +28,11 @@ public class RecipeActivity extends BaseActivity implements RecipeView {
     @Override
     public void setPresenter() {
         recipePresenter = new RecipePresenter();
-        recipePresenter.loadRecipesFromServer();
+        recipePresenter.attachView(this);
+        recipePresenter.setToolBar(getString(R.string.app_name));
     }
 
 
-    @Override
-    public void showAllRecipe(List<Recipe> recipeList) {
-
-    }
 
     @Override
     public void showProgress() {
@@ -47,6 +46,12 @@ public class RecipeActivity extends BaseActivity implements RecipeView {
 
     @Override
     public void displayToolBar(String toolBarTitle) {
+        toolbar.setTitle(toolBarTitle);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
     }
+
+
 }
